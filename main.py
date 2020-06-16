@@ -5,7 +5,7 @@
 #    Date: 5/16/2020
 #    Project: FlyToday App in Python
 #
-#    Purpose: wuing a wuer supplied api key, zip code, and desired environment
+#    Purpose: using a user supplied api key, zip code, and desired environment
 #            variables, the program will get the local weather information from
 #            'openweathermap.org'; and based on that information and the wuer
 #            defined environment variables, will suggest if it is a good day
