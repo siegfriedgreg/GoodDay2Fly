@@ -4,9 +4,9 @@ from time import localtime, strftime
 class User(object):
 
     # BASE DATA
-    fileName = "weaTex_01.txt"
-    apiKey = "&appid=" + "b65e161b18736e911c299c20fd7858cc"
-    zipCode = "zip=" + "27707"
+    fileName = ""
+    apiKey = "&appid=" + ""
+    zipCode = "zip=" + ""
     countryCode = "," + "US"
     unitView = "&units=" + "imperial" # 'imperial' or 'metric'
     # DESIRED VALUES
