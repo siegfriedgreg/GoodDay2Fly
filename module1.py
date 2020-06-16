@@ -7,11 +7,11 @@ from time import localtime, strftime
 class User(object):
 
     # User required/desired variables
-    _fileName = "forcast_backup.txt"
-    _apiKey = "b65e161b18736e911c299c20fd7858cc"
+    _fileName = ""
+    _apiKey = ""
     _units = "imperial"
-    _lat = "35.95"
-    _lon = "-78.95"
+    _lat = ""
+    _lon = ""
     _link = "https://api.openweathermap.org/data/2.5/onecall?"
     _desired = {'temp_min':50, 'temp_max':99, 'wind_max':22, 'clouds':83 }
     _weatherID = {800:"no clouds", 801:"few clouds", 802:"scattered clouds", 
