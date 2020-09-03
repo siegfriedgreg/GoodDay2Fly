@@ -1,7 +1,7 @@
 # GoodDay2Fly
 "Stay out of clouds. The silver lining everyone keeps talking about might be another airplane going in the opposite direction. Reliable sources also report that mountains have been known to hide out in clouds." - pilot quote.
 
-GoodDay2Fly is a python weather app that uses openweathermap.com API to get weather data for a specific GPS position. The data response is saved in a JSON format as a user specified file. The user should input their own API key in the respective module file. The user will also be able to set their own desired weather parameters. Allowing for a custom outlook of desireable future days to enjoy a flight.
+GoodDay2Fly is a python weather app that uses openweathermap.com API to get weather data for a specific GPS position. The data response is saved in a JSON format as a user specified file. The user should input their own API key in the respective module file. The user will also be able to set their own desired weather parameters. Allowing for a custom outlook of desireable days in the future, to enjoy a flight.
 
 Output consists of the current weather, tomorrows weather, a weekly outlook, and an hourly outlook for the next three days.
 
