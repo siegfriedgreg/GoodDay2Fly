@@ -1,11 +1,15 @@
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
+################################################################################
+# ------------>>>>            USER_DATA.PY
+################################################################################
 
 import json
 import requests
 import os.path as osp
 from time import localtime, strftime, time
+
+################################################################################
+# ------------>>>>            START USER CLASS
+################################################################################
 
 
 class User:
@@ -102,29 +106,6 @@ class User:
         print('    Description: {0[0]} : {0[1]}'.format(desc))
         print("\n")
 
-    # Print the hourly outlook for the next 3 days.
-    def print_three_day_outlook(self, args):
-
-        print("          3 Day Outlook: ")
-
-        # Get Valid Sunrise/Sunset values for good weather for the next 3 days.
-        for i in range(1, 4):
-            print('  {}:  '.format(self.convert_date(args[i]["dt"])))
-
-            # Filter by weatherID and Cloud values.
-            if(args[i]["weather"][0]["id"] in self.weather_id
-               and args[i]["clouds"] <= self.desired["clouds"]):
-
-                # Take Filtered Value and Print the Hours within Sunrise to Sunset.
-                for j in range(0, 47):
-
-                    if(args[i]["sunrise"] <= args[j]["dt"] <= args[i]["sunset"]):
-
-                        print('  Time: {}  Temp: {}  Clouds: {}  Wind: {}  Weather: {} '.format(
-                              User.convert_time(
-                                  args[j]["dt"]), args[j]["temp"], args[j]["clouds"],
-                              args[j]["wind_speed"], args[j]["weather"][0]["description"]))
- 
     # Print the outlook for the next week.
     def print_week_outlook(self, args):
 
@@ -167,18 +148,6 @@ class User:
             except Exception as e:
                 print(e)
 
-    # Three Day Outlook Function
-    def three_days_out(self):
-
-        file_string = self.option[1] + self.backup
-
-        with open(file_string, 'r') as input:
-            kx = json.load(input)
-            try:
-                self.print_three_day_outlook(kx["list"])
-            except Exception as e:
-                print(e)
-
     # Week Outlook Function
     def week_out(self):
 
@@ -191,9 +160,6 @@ class User:
             except Exception as e:
                 print(e)
 
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------
+################################################################################
+# ------------>>>>            END USER CLASS
+################################################################################

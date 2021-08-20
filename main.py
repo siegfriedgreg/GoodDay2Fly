@@ -5,14 +5,17 @@
 #    Date: 5/16/2020
 #    Project: FlyToday App in Python
 #
-#    Purpose: using a us supplied api key, zip code, and desired environment
-#            variables, the program will get the local weather information from
-#            'openweathermap.org'; and based on that information and the wuer
-#            defined environment variables, will suggest if it is a good day
-#            to fly or not. 
+#    Purpose: To give the user plnning ability on finding the best times to fly.
+#            Intent is for RC enthusiests to have better insight into their 
+#            preferred weather, to be able to get equipment ready in time.
 #
-#    Features: Supports current weather information. Working on the forcast 
-#          methodto be able to give you days and times to expect a good flight.
+#    Features: The free version of OpenWeatherMap.org provides current weather
+#           and a 5 day three hour block forcast.  The app will display current
+#           current weather variables, and based on user defined values, can 
+#           look through the 5 day forcast and find days/times that would good to
+#           plan for. Obviously the forcast can only be so accurate, but it can
+#           give enough detail to plan for events.  This app is designed to give
+#           flight recommendations during daylight hours.
 #
 ##
 ####
