@@ -114,16 +114,22 @@ class User:
         for i in args:
 
             if(i["weather"][0]["id"] in self.weather_id and i["clouds"]["all"] <= self.desired["clouds"]):
-                print('    :GOOD:  {} : {}; clouds: {}'.format(
-                    self.convert_date(i["dt"]), i["weather"][0]["description"], i["clouds"]["all"]))
+                print('    :GOOD:  {}  {}  -> vis: {} mi  -> temp: {} F'.format(
+                    i['dt_txt'], i['weather'][0]['description'],
+                    round(i["visibility"] / 5280, 2), i['main']['feels_like']))
 
             elif i["weather"][0]["id"] in self.weather_id:
-                print('    :MAYBE: {} : {}; clouds: {}'.format(
-                    self.convert_date(i["dt"]), i["weather"][0]["description"], i["clouds"]["all"]))
-
+                print('    :MAYBE:  {}  {}  -> vis: {} mi  -> temp: {} F'.format(
+                    i['dt_txt'], i['weather'][0]['description'],
+                    round(i["visibility"] / 5280, 2), i['main']['feels_like']))
             else:
-                print('    :BAD:   {} : {}; clouds: {}'.format(
-                    self.convert_date(i["dt"]), i["weather"][0]["description"], i["clouds"]["all"]))
+                print('    :BAD:   {}  {}  -> vis: {} mi  -> temp: {} F'.format(
+                    i['dt_txt'], i['weather'][0]['description'],
+                    round(i["visibility"] / 5280, 2), i['main']['feels_like']))
+            
+            # Checks for end of day to print new line for the next day
+            if strftime("%H", localtime(i['dt']))== '17':
+                print("\n")
 
         print("\n")
 
