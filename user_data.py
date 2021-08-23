@@ -105,7 +105,7 @@ class User:
         vis = [round(args["visibility"] / 5280, 2)]
         desc = [args["weather"][0]["main"], args["weather"][0]["description"]]
 
-        # Print Variables
+        # Print Variables in format
         print("          Current Weather: ")
         print('    Date: {0[0]}        Time: {0[1]}'.format(lt))
         print('    Sunrise: {0[0]}      Sunset: {0[1]}'.format(dl))
@@ -124,6 +124,7 @@ class User:
 
         print("          Weekly Outlook: ")
 
+        # Filters the args based on user variables.
         for i in args:
 
             if(i["weather"][0]["id"] in self.weather_id and i["clouds"]["all"] <= self.desired["clouds"]):
@@ -153,10 +154,14 @@ class User:
         file_string = self.option[0] + self.backup
 
         try:
+            # If file is found, take the difference of current 
+            # time and the last time it was modified
             delta_tee = time() - osp.getmtime(file_string)
         except OSError:
             self.update_file(0)
         finally:
+            # Update file, if the last time it was modified 
+            # was longer than 10 min ago
             if delta_tee >= 600.1:
                 self.update_file(0)
 
@@ -172,8 +177,21 @@ class User:
     # Week Outlook Function
     def week_out(self):
 
+        delta_tee = 0
         file_string = self.option[1] + self.backup
 
+        try:
+            # If file is found, take the difference of current 
+            # time and the last time it was modified
+            delta_tee = time() - osp.getmtime(file_string)
+        except OSError:
+            self.update_file(1)
+        finally:
+            # Update file, if the last time it was modified 
+            # was longer than 10 min ago
+            if delta_tee >= 600.1:
+                self.update_file(1)
+                
         with open(file_string, 'r') as input:
             kx = json.load(input)
             try:

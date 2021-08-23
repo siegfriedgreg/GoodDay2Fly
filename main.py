@@ -46,10 +46,13 @@ if __name__ == "__main__":
     # Create User
     md = us()
     try:
+        # Update User with saved parameters
         md.user_update()
     except:
+        # If failed, do not enter loop and exit
         repeat = False
     else:
+        # Enter while loop
         repeat = True
 
     while repeat:

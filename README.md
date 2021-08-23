@@ -1,8 +1,8 @@
 # GoodDay2Fly
 
-GoodDay2Fly is a python weather app that uses openweathermap.com API to get weather data for your location. The data response is saved in a JSON format in a specified file. The user should input their own API key in the user_data.py file. The user will also be able to set their own desired weather parameters there as well. 
+GoodDay2Fly is a python weather app that uses openweathermap.com API to get current weather data for your location, and will display the five day outlook rated on user input. The data response is saved in a JSON format in a specified file for future recall and prevent repeat html queries. The user should input their own API key in the usbu.txt file, and set their own desired weather parameters as well. 
 
-Output consists of the current weather, and a weekly outlook.
+Output consists of the current weather, and 5 day outlook.
 
           Current Weather:
     Date: Sat, June 13         Time: 10:41:11 PM
