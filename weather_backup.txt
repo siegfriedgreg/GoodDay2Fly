@@ -8,23 +8,23 @@
     "lat": 35.9631,
     "lon": -78.9315
   },
-  "dt": 1629483771,
+  "dt": 1629671034,
   "id": 0,
   "main": {
-    "feels_like": 95.86,
-    "humidity": 70,
-    "pressure": 1013,
-    "temp": 86.32,
-    "temp_max": 90.39,
-    "temp_min": 81.99
+    "feels_like": 87.46,
+    "humidity": 77,
+    "pressure": 1012,
+    "temp": 81.73,
+    "temp_max": 88.02,
+    "temp_min": 76.08
   },
   "name": "Durham",
   "sys": {
     "country": "US",
-    "id": 2040014,
-    "sunrise": 1629455912,
-    "sunset": 1629503995,
-    "type": 2
+    "id": 5645,
+    "sunrise": 1629628807,
+    "sunset": 1629676642,
+    "type": 1
   },
   "timezone": -14400,
   "visibility": 10000,
@@ -37,8 +37,7 @@
     }
   ],
   "wind": {
-    "deg": 349,
-    "gust": 4,
-    "speed": 1.99
+    "deg": 300,
+    "speed": 3.44
   }
 }

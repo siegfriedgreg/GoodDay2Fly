@@ -16,17 +16,30 @@ class User:
 
     def __init__(self):
 
+        self.api_key = ""
+        self.zip_code = ""
+        self.units = ""
+        self.desired = {}
+
+        self.user_backup = "usbu.txt"  
         self.backup = "_backup.txt"
-        self.api_key = "b65e161b18736e911c299c20fd7858cc"
-        self.zip_code = "27707"
         self.option = ['weather', 'forecast']
-        self.units = "imperial"
         self.link = "http://api.openweathermap.org/data/2.5/"
-        self.desired = {'temp_min': 50, 'temp_max': 99,
-                        'wind_max': 22, 'clouds': 83}
         self.weather_id = {800: "no clouds", 801: "few clouds",
                            802: "scattered clouds", 803: "broken clouds",
                            804: "overcast clouds"}
+
+    # Get and update user data from usbu.txt
+    def user_update(self):
+        kx = []
+        with open(self.user_backup, 'r') as input:
+            kx = json.load(input)
+
+        self.api_key = kx["api_k"]
+        self.zip_code = kx["zip_c"]
+        self.units = kx["units"]
+        self.desired = kx["desired"]
+        del(kx)
 
     # Create the specific Weather/Forcast link to get the correct information
     def update_file(self, args=0):
@@ -153,6 +166,8 @@ class User:
                 self.print_current_day(kx)
             except Exception as e:
                 print(e)
+            else:
+                del(kx)
 
     # Week Outlook Function
     def week_out(self):
@@ -165,6 +180,8 @@ class User:
                 self.print_week_outlook(kx["list"])
             except Exception as e:
                 print(e)
+            else:
+                del(kx)
 
 ################################################################################
 # ------------>>>>            END USER CLASS

@@ -45,7 +45,12 @@ if __name__ == "__main__":
 
     # Create User
     md = us()
-    repeat = True
+    try:
+        md.user_update()
+    except:
+        repeat = False
+    else:
+        repeat = True
 
     while repeat:
 
