@@ -27,6 +27,8 @@ units = "imperial"
 option = ["weather", "forecast"]
 link = "http://api.openweathermap.org/data/2.5/"
 s_time = "12:00:00"
+desired = { "temp_min": 50, "temp_max": 99, "wind_max": 18, "clouds": 83 }
+weather_id = {800: "no clouds", 801: "few clouds", 802: "scattered clouds", 803: "broken clouds", 804: "overcast clouds"}
 
 # COLOR FORMATTING.
 # Fore|Back = BLACK, WHITE, BLUE, GREEN, RED, YELLOW, MAGENTA
@@ -41,6 +43,8 @@ FLT = Style.BRIGHT + Fore.GREEN
 # ----> Forecast
 HC = Style.BRIGHT + Fore.CYAN
 LC = Style.NORMAL + Fore.WHITE
+GD = Style.BRIGHT + Fore.GREEN
+BD = Style.BRIGHT + Fore.RED
 
 ################################################################################
 # ------------>>>>            FUNCTIONS
@@ -121,10 +125,15 @@ def print_forecast(args):
     for hours in args['list']:
         temp = hours['dt_txt'].split(' ')[1]
         if ((s_time == temp) & (Count <= 3)):
-            fct[Count][0] = convert_date(hours['dt'])
             fct[Count][1] = round(hours['main']['feels_like'], 1)
             fct[Count][2] = round(hours['wind']['speed'], 1)
             fct[Count][3] = hours['weather'][0]['description']
+            
+            if hours['clouds']['all'] <= desired['clouds'] & (desired['temp_min'] <= fct[Count][1] <= desired['temp_max']):
+                fct[Count][0] = GD + convert_date(hours['dt'])
+            else:
+                fct[Count][0] = BD + convert_date(hours['dt'])
+
             Count += 1
 
     print( HC + "\t\tForecast: ")
