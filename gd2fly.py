@@ -26,9 +26,8 @@ zip_code = "27707"
 units = "imperial"
 option = ["weather", "forecast"]
 link = "http://api.openweathermap.org/data/2.5/"
-s_time = "12:00:00"
-# clouds = % of clouds in the sky.
-desired = { "temp_min": 40, "temp_max": 99, "wind_max": 18, "clouds": 83 } 
+s_time = "15:00:00" # 3 hour blocks in military time.
+desired = { "temp_min": 40, "temp_max": 99, "wind_max": 18, "clouds": 83 } # clouds = % of clouds in the sky.
 
 # COLOR FORMATTING.
 # Fore|Back = BLACK, WHITE, BLUE, GREEN, RED, YELLOW, MAGENTA
@@ -69,23 +68,11 @@ def convert_time(value):
 
 # Convert the wind_degree value into a wind direction icon.
 def convert_wind(value):
-
-    if (22 <= value <= 68):
-        return " SW -> NE "
-    elif (69 <= value <= 114):
-        return " W -> E "
-    elif (115 <= value <= 160):
-        return " NW -> SE "
-    elif (161 <= value <= 206):
-        return " N -> S "
-    elif (207 <= value <= 252):
-        return " NE -> SW "
-    elif (253 <= value <= 298):
-        return " E -> W "
-    elif (299 <= value <= 344):
-        return " SE -> NW "
-    else:
-        return " S -> N"
+    
+    di = [" S -> N"," SW -> NE "," W -> E "," NW -> SE "," N -> S "," NE -> SW "," E -> W "," SE -> NW " ]
+    id = (value + 45) % 8
+    
+    return di[id] 
 
 # Format and Print the current weather data.
 def print_weather(args):
@@ -125,11 +112,10 @@ def print_forecast(args):
     for hours in args['list']:
         temp = hours['dt_txt'].split(' ')[1]
         if ((s_time == temp) & (Count <= 3)):
-            fct[Count][1] = round(hours['main']['feels_like'], 1)
+            fct[Count][1] = round(hours['main']['temp_max'], 1)
             fct[Count][2] = round(hours['wind']['speed'], 1)
-            fct[Count][3] = hours['weather'][0]['description']
-            
-            if hours['clouds']['all'] <= desired['clouds'] & (desired['temp_min'] <= fct[Count][1] <= desired['temp_max']) & (fct[Count][2] <= desired['wind_max']):
+            fct[Count][3] = hours['weather'][0]['description'] 
+            if ((hours['clouds']['all'] <= desired['clouds']) & (desired['temp_min'] <= fct[Count][1] <= desired['temp_max']) & (fct[Count][2] <= desired['wind_max'])):
                 fct[Count][0] = GD + convert_date(hours['dt'])
             else:
                 fct[Count][0] = BD + convert_date(hours['dt'])
